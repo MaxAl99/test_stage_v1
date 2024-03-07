@@ -7,8 +7,6 @@ using namespace std;
 void display_customer(Account p);
 
 int main() {
-    // cout.precision(2);
-    // cout << fixed;
 
     Account steve_account {"Steve",1000,1};
 

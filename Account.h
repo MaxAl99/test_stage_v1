@@ -6,28 +6,20 @@ class Account
 {
     private:
         std::string name;
-        int Balance;
-        int customer_id;
+        double balance;
+        int id;
 
     public:
         Account();  // No Arg. Constructor
-        Account(std::string name, int Balance, int customer_id); // Constructor
+        Account(std::string n, double b, int i); // Constructor
 
-        int get_balance() {return Balance; }
-        std::string get_name() {return name; }
-        int get_id() {return customer_id; }
+        double get_balance() const;
+        std::string get_name() const;
+        int get_id() const;
 
         //Account(const Account &source); // Copy Constructor
-        ~Account(); // Destructor
+        //~Account(); // Destructor
 };
 
-// Assignment Init
-// Account::Account() :name{"None"}, Balance{0}, customer_id{0} {
-// }
-
-// // Initialization List
-// Account::Account(std::string name_str, int bal, int id)
-//     : name{name_str}, Balance{bal}, customer_id{id} {
-// }
 
 #endif //_ACCOUNT_H_
