@@ -21,5 +21,4 @@ class Account
         //~Account(); // Destructor
 };
 
-
 #endif //_ACCOUNT_H_
