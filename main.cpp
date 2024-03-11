@@ -5,19 +5,18 @@
 using namespace std;
 
 void display_customer(Account p);
+void update_balance(Account p);
 
 int main() {
 
     Account steve_account {"Steve",1000,1};
 
     display_customer(steve_account);
+    update_balance(steve_account);
+
+    // steve_account.update_balance(deposit_in);
+    // steve_account.get_balance();
 
     return 0;
-}
-
-void display_customer(Account p) {
-	std::cout << "Name: " << p.get_name() << std::endl;
-	std::cout << "ID: " << p.get_id() << std::endl;
-    std::cout << "Balance: " << p.get_balance() << std::endl;
 }
 
