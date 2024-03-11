@@ -6,16 +6,23 @@ using namespace std;
 
 void display_customer(Account p);
 void update_balance(Account p);
+void sending_address();
+void sending_money(Account person_out, Account person_in);
 
 int main() {
 
-    Account steve_account {"Steve",1000,1};
 
+    // Accounts
+    Account steve_account {"Steve",1000,1};
     display_customer(steve_account);
+    Account tim_account {"Tim",500,2};
+    display_customer(steve_account);
+    display_customer(tim_account);
+
     update_balance(steve_account);
 
-    // steve_account.update_balance(deposit_in);
-    // steve_account.get_balance();
+    //sending_address();
+    //sending_money(person_in, person_out);
 
     return 0;
 }
