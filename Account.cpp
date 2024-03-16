@@ -1,4 +1,5 @@
 #include "Account.h"
+#include <memory>
 
 Account::Account(std::string n, double b, int i) : name(n), balance(b), id(i) {};
 
@@ -24,61 +25,66 @@ void Account::charge_deposit() {
     double deposit;
     std::cout << "Charge new deposit: " << std::endl;
     std::cin >> deposit;
-    if (balance-deposit >=0) {
+    if (balance-deposit >= 0) {
     balance -= deposit;
         std::cout << name << " was successfully charged." << std::endl;
-    } else
+    } else {
         std::cout << name << " balance is too low." << std::endl;
         throw 0;
+    }
 }
 
-void Account::send_credit() {
+double Account::send_credit() {
     double deposit;
     std::cout << "Charge new credit volume: " << std::endl;
     std::cin >> deposit;
-    if (balance-deposit >=0) {
+    if (balance-deposit >= 0) {
     balance -= deposit;
-    credit = deposit;
+    double credit = deposit;
+    return credit;
         std::cout << name << " was successfully charged." << std::endl;
-    } else
+    } else {
         std::cout << name << " balance is too low." << std::endl;
         throw 0;
+    }
 }
 
-void Account::get_credit() {
-    balance += credit;
+void Account::get_credit(double *credit_ptr) {
+    balance += *credit_ptr;
         std::cout << name << " credit was successful." << std::endl;
 }
 
-void Account::reset_credit() {
-    credit = 0;
-}
+// void Account::reset_credit() {
+//     credit = 0;
+// }
 
 void update_balance(Account p) {
     try {
     p.charge_deposit(); // call member function
     std::cout << "The new balance of " << p.get_name() << " is: " << p.get_balance() << std::endl;
     }
-    catch (int &ex) {
+    catch (...) {
     std::cout << "The balance of " << p.get_name() << " was not changed." << std::endl;
     }
 }
 
 // sending function
 
-// void sending_money(Account person_out, Account person_in) {
-//     try {
-//     person_out.send_credit(); // call member function
-//     person_in.get_credit(); // call member function
-//     std::cout << "The new balance of " << person_out.get_name() << " is: " << person_out.get_balance() << std::endl;
-//     std::cout << "The new balance of " << person_in.get_name() << " is: " << person_in.get_balance() << std::endl;
-//     person_out.reset_credit(); // call member function
-//     person_in.reset_credit(); // call member function
-//     }
-//     catch (int &ex) {
-//     std::cout << "The balance of " << person_out.get_name() << " was not changed." << std::endl;
-//     }
-// }
+void sending_money(Account person_out, Account person_in) {
+    try {
+    double *credit_ptr = nullptr;
+    credit_ptr = new double;
+    *credit_ptr = person_out.send_credit(); // call member function
+    person_in.get_credit(credit_ptr); // call member function
+    std::cout << "The new balance of " << person_out.get_name() << " is: " << person_out.get_balance() << std::endl;
+    std::cout << "The new balance of " << person_in.get_name() << " is: " << person_in.get_balance() << std::endl;
+    delete credit_ptr;
+    }
+    catch (int &ex) {
+    std::cout << "The balance of " << person_out.get_name() << " was not changed." << std::endl;
+    //delete credit_ptr;
+    }
+}
 
 // void sending_address() {
 //     //static double person_in;

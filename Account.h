@@ -8,7 +8,7 @@ class Account
     private:
         std::string name;
         double balance;
-        double credit;
+        //double credit;
         int id;
         double *val_d;
         double *val_b;
@@ -24,8 +24,8 @@ class Account
         std::string get_name() const;
         int get_id() const;
         void charge_deposit();
-        void send_credit();
-        void get_credit();
+        double send_credit();
+        void get_credit(double *credit_ptr);
         void reset_credit();
 
         //Account(const Account &source); // Copy Constructor

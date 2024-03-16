@@ -22,7 +22,7 @@ int main() {
     update_balance(steve_account);
 
     //sending_address();
-    //sending_money(person_in, person_out);
+    sending_money(steve_account, tim_account);
 
     return 0;
 }
