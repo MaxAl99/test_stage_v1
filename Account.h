@@ -2,7 +2,7 @@
 #define _ACCOUNT_H_
 #include <string>
 #include <iostream>
-
+#include <vector>
 class Account
 {
     private:
@@ -10,13 +10,15 @@ class Account
         double balance;
         //double credit;
         int id;
-        double *val_d;
-        double *val_b;
+        // double *val_d;
+        // double *val_b;
 
     public:
         Account();  // No Arg. Constructor
         Account(std::string n);  // String Constructor
         Account(std::string n, double b, int i); // Constructor
+
+        std::vector<Account> customers;
 
         // methods
         double get_balance() const;
@@ -27,6 +29,8 @@ class Account
         double send_credit();
         void get_credit(double *credit_ptr);
         void reset_credit();
+
+        void create_customer(int number_customer);
 
         //Account(const Account &source); // Copy Constructor
         //~Account(); // Destructor

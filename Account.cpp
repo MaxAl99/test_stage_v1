@@ -21,6 +21,31 @@ void display_customer(Account p) {
     std::cout << "Balance: " << p.get_balance() << std::endl;
 }
 
+void Account::create_customer(int number_customer) {
+    std::string *customer_name = nullptr;
+    customer_name = new std::string;
+    //*customer_name = 
+    std::cout << "Name of new customer: " << std::endl;
+    std::cin >> *customer_name;
+
+    double *customer_balance = nullptr;
+    customer_balance = new double;
+    //*customer_name = 
+    std::cout << "Name of new customer: " << std::endl;
+    std::cin >> *customer_balance;
+
+    Account new_account {*customer_name, *customer_balance, number_customer};
+    number_customer += 1;
+    customers.push_back(new_account);
+
+    std::cout << "Customer added successfully!" << std::endl;
+}
+
+void new_customer(Account p) {
+    std::cout << "*** creating new customer ***" << std::endl;
+    p.create_customer(number_customer);
+}
+
 void Account::charge_deposit() {
     double deposit;
     std::cout << "Charge new deposit: " << std::endl;
