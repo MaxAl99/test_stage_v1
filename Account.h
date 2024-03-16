@@ -2,16 +2,16 @@
 #define _ACCOUNT_H_
 #include <string>
 #include <iostream>
+#include <vector>
 
 class Account
 {
     private:
         std::string name;
         double balance;
-        //double credit;
         int id;
-        double *val_d;
-        double *val_b;
+        // double *val_d;
+        // double *val_b;
 
     public:
         Account();  // No Arg. Constructor

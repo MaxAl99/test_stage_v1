@@ -1,4 +1,5 @@
 #include "Account.h"
+#include "Bank.h"
 #include <memory>
 
 Account::Account(std::string n, double b, int i) : name(n), balance(b), id(i) {};
@@ -20,6 +21,24 @@ void display_customer(Account p) {
 	std::cout << "ID: " << p.get_id() << std::endl;
     std::cout << "Balance: " << p.get_balance() << std::endl;
 }
+
+// void create_customer(int number_customer) {
+//     std::string *customer_name = nullptr;
+//     customer_name = new std::string;
+//     //*customer_name = 
+//     std::cout << "Name of new customer: " << std::endl;
+//     std::cin >> *customer_name;
+
+//     double *customer_balance = nullptr;
+//     customer_balance = new double;
+//     //*customer_name = 
+//     std::cout << "Name of new customer: " << std::endl;
+//     std::cin >> *customer_balance;
+
+//     Account new_account {*customer_name, *customer_balance, number_customer};
+//     number_customer += 1;
+//     //display_customer(new_account);
+// }
 
 void Account::charge_deposit() {
     double deposit;
