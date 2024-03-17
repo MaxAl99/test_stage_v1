@@ -17,7 +17,6 @@ int main() {
     
 
     Bank Stonks_Bank_CORP;
-
     user_console(Stonks_Bank_CORP);
 
     return 0;

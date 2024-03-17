@@ -18,36 +18,35 @@ void adding_customer(Bank& p) {
 
 void disp_all_customer(Bank& p) {
     p.display_customers();
+    std::cout << " " << std::endl;
+}
+
+template<typename Function>
+void perform_action(const std::string& prompt, Function action) {
+    int index;
+    int flag = 1;
+    while (flag == 1) {
+        std::cout << prompt << std::endl;
+        std::cin >> index;
+        action(index); // Call the function passed as argument
+        std::cout << "Do you want to perform another action?: " << std::endl;
+        std::cout << " Yes: 1 " << std::endl;
+        std::cout << " No: 0 " << std::endl;
+        std::cin >> flag;
+        std::cout << " " << std::endl;
+    }
 }
 
 void disp_customer(Bank& p) {
-    int index;
-    int flag = 1;
-    while (flag == 1) {
-        std::cout << "Provide Customer ID to be displayed: " << std::endl;
-        std::cin >> index;
+    perform_action("Provide Customer ID to be displayed: ", [&](int index) {
         p.display_single_customer(index);
-        std::cout << "Do you want to display another customer?: " << std::endl;
-        std::cout << " Yes: 1 " << std::endl;
-        std::cout << " No: 0 " << std::endl;
-        std::cin >> flag;
-        std::cout << " " << std::endl;
-    }
+    });
 }
 
 void charge_money(Bank& p) {
-    int index;
-    int flag = 1;
-    while (flag == 1) {
-        std::cout << "Provide Customer ID to be charged: " << std::endl;
-        std::cin >> index;
+    perform_action("Provide Customer ID to be charged: ", [&](int index) {
         p.charge_customer(index);
-        std::cout << "Do you want to charge another customer?: " << std::endl;
-        std::cout << " Yes: 1 " << std::endl;
-        std::cout << " No: 0 " << std::endl;
-        std::cin >> flag;
-        std::cout << " " << std::endl;
-    }
+    });
 }
 
 void sending_money(Bank& p) {
