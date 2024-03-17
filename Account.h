@@ -18,7 +18,6 @@ class Account
         Account(std::string n);  // String Constructor
         Account(std::string n, double b, int i); // Constructor
 
-        std::vector<Account> customers;
 
         // methods
         double get_balance() const;
@@ -31,9 +30,74 @@ class Account
         void reset_credit();
 
         void create_customer(int number_customer);
+        void display() const;
 
         //Account(const Account &source); // Copy Constructor
         //~Account(); // Destructor
+};
+
+class Bank
+{
+    private:
+        std::vector<Account> customers;
+        int number_customer;
+
+    public:
+        
+    Bank() : number_customer(1) {}
+
+    void create_customer() {
+    std::cout << "*** creating new customer ***" << std::endl;
+    std::string *customer_name = new std::string;
+    std::cout << "Name of new customer: " << std::endl;
+    std::cin >> *customer_name;
+
+    double *customer_balance = new double;
+    std::cout << "Balance of new customer: " << std::endl;
+    std::cin >> *customer_balance;
+
+    Account new_account(*customer_name, *customer_balance, number_customer);
+    number_customer += 1;
+    customers.push_back(new_account);
+
+    std::cout << "Customer added successfully!" << std::endl;
+
+    delete customer_name;
+    delete customer_balance;
+    }
+
+    void display_customers() {
+        if (customers.empty()) {
+            std::cout << "No customers available." << std::endl;
+            return;
+        }
+
+        std::cout << "*** List of Customers ***" << std::endl;
+        for (const auto& customer : customers) {
+            std::cout << "Customer Name: " << customer.get_name() << std::endl;
+            std::cout << "Customer Balance: " << customer.get_balance() << std::endl;
+            std::cout << "Customer Number: " << customer.get_id() << std::endl;
+            std::cout << "-------------------------" << std::endl;
+        }
+    }
+
+    void display_single_customer(int index) {
+        if (customers.empty()) {
+            std::cout << "No customers available." << std::endl;
+            return;
+        }
+        if (index >= 0 && index < customers.size()) {
+            std::cout << "*** Customer with ID " << index << " ***" << std::endl;
+            std::cout << "Customer Name: " << customers.at(index).get_name() << std::endl;
+            std::cout << "Customer Balance: " << customers.at(index).get_balance() << std::endl;
+            std::cout << "Customer Number: " << customers.at(index).get_id() << std::endl;
+            std::cout << "-------------------------" << std::endl; 
+        } else {
+            // Throw an exception or handle the error appropriately
+            throw std::out_of_range("Index out of bounds");
+        }
+    }   
+
 };
 
 #endif //_ACCOUNT_H_

@@ -3,6 +3,37 @@
 
 Account::Account(std::string n, double b, int i) : name(n), balance(b), id(i) {};
 
+
+void adding_customer(Bank& p) {
+
+    int flag = 1;
+    while (flag == 1) {
+        p.create_customer();
+        std::cout << "Do you want another customer?: " << std::endl;
+        std::cout << " Yes: 1 " << std::endl;
+        std::cout << " Yes: 0 " << std::endl;
+        std::cin >> flag;
+    }
+}
+
+void disp_all_customer(Bank& p) {
+    p.display_customers();
+}
+
+void disp_customer(Bank& p) {
+    int index;
+    int flag = 1;
+    while (flag == 1) {
+        std::cout << "Provide Customer ID to be displayed: " << std::endl;
+        std::cin >> index;
+        p.display_single_customer(index);
+        std::cout << "Do you want to display another customer?: " << std::endl;
+        std::cout << " Yes: 1 " << std::endl;
+        std::cout << " Yes: 0 " << std::endl;
+        std::cin >> flag;
+    }
+}
+
 std::string Account::get_name() const {
     return name;
 }
@@ -13,37 +44,6 @@ int Account::get_id() const {
 
 double Account::get_balance() const {
     return balance;
-}
-
-void display_customer(Account p) {
-	std::cout << "Name: " << p.get_name() << std::endl;
-	std::cout << "ID: " << p.get_id() << std::endl;
-    std::cout << "Balance: " << p.get_balance() << std::endl;
-}
-
-void Account::create_customer(int number_customer) {
-    std::string *customer_name = nullptr;
-    customer_name = new std::string;
-    //*customer_name = 
-    std::cout << "Name of new customer: " << std::endl;
-    std::cin >> *customer_name;
-
-    double *customer_balance = nullptr;
-    customer_balance = new double;
-    //*customer_name = 
-    std::cout << "Name of new customer: " << std::endl;
-    std::cin >> *customer_balance;
-
-    Account new_account {*customer_name, *customer_balance, number_customer};
-    number_customer += 1;
-    customers.push_back(new_account);
-
-    std::cout << "Customer added successfully!" << std::endl;
-}
-
-void new_customer(Account p) {
-    std::cout << "*** creating new customer ***" << std::endl;
-    p.create_customer(number_customer);
 }
 
 void Account::charge_deposit() {

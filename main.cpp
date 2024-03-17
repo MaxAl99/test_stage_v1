@@ -4,17 +4,24 @@
 
 using namespace std;
 
-static int number_customer = 1;
-
 void display_customer(Account p);
 void update_balance(Account p);
 void sending_address();
 void sending_money(Account person_out, Account person_in);
-void create_customer(int number_customer);
+void create_customer();
+
+void adding_customer(Bank& p);
+void disp_all_customer(Bank& p);
+void disp_customer(Bank& p);
 
 int main() {
-    Account bank;
-    bank.create_customer(int number_customer);
+    
+    Bank Bank1;
+
+    adding_customer(Bank1);
+    disp_all_customer(Bank1);
+    disp_customer(Bank1);
+
 
     // Accounts
     // Account steve_account {"Steve",1000,1};
