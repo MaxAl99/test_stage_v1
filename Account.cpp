@@ -3,17 +3,15 @@
 
 Account::Account(std::string n, double b, int i) : name(n), balance(b), id(i) {};
 
-
 void adding_customer(Bank& p) {
-
-    int flag = 1;
-    while (flag == 1) {
-        p.create_customer();
-        std::cout << "Do you want another customer?: " << std::endl;
-        std::cout << " Yes: 1 " << std::endl;
-        std::cout << " Yes: 0 " << std::endl;
-        std::cin >> flag;
-    }
+            int flag = 1;
+            while (flag == 1) {
+                p.create_customer();
+                std::cout << "Do you want another customer?: " << std::endl;
+                std::cout << " Yes: 1 " << std::endl;
+                std::cout << " Yes: 0 " << std::endl;
+                std::cin >> flag;
+            }
 }
 
 void disp_all_customer(Bank& p) {
@@ -34,82 +32,42 @@ void disp_customer(Bank& p) {
     }
 }
 
-std::string Account::get_name() const {
-    return name;
-}
 
-int Account::get_id() const {
-    return id;
-}
 
-double Account::get_balance() const {
-    return balance;
-}
+// *** calling functions of class member functions ***
 
-void Account::charge_deposit() {
-    double deposit;
-    std::cout << "Charge new deposit: " << std::endl;
-    std::cin >> deposit;
-    if (balance-deposit >= 0) {
-    balance -= deposit;
-        std::cout << name << " was successfully charged." << std::endl;
-    } else {
-        std::cout << name << " balance is too low." << std::endl;
-        throw 0;
+void charge_money(Bank& p) {
+    int index;
+    int flag = 1;
+    while (flag == 1) {
+        std::cout << "Provide Customer ID to be charged: " << std::endl;
+        std::cin >> index;
+        p.charge_customer(index);
+        std::cout << "Do you want to charge another customer?: " << std::endl;
+        std::cout << " Yes: 1 " << std::endl;
+        std::cout << " Yes: 0 " << std::endl;
+        std::cin >> flag;
     }
 }
 
-double Account::send_credit() {
-    double deposit;
-    std::cout << "Charge new credit volume: " << std::endl;
-    std::cin >> deposit;
-    if (balance-deposit >= 0) {
-    balance -= deposit;
-    double credit = deposit;
-    return credit;
-        std::cout << name << " was successfully charged." << std::endl;
-    } else {
-        std::cout << name << " balance is too low." << std::endl;
-        throw 0;
+void sending_money(Bank& p) {
+    int index_out;
+    int index_in;
+    int flag = 1;
+    while (flag == 1) {
+        std::cout << "Provide Customer ID to be charged: " << std::endl;
+        std::cin >> index_out;
+        std::cout << "Provide Customer ID for credit note: " << std::endl;
+        std::cin >> index_in;
+        p.credit_customer(index_out, index_in);
+        std::cout << "Do you want to charge another customer?: " << std::endl;
+        std::cout << " Yes: 1 " << std::endl;
+        std::cout << " Yes: 0 " << std::endl;
+        std::cin >> flag;
     }
 }
 
-void Account::get_credit(double *credit_ptr) {
-    balance += *credit_ptr;
-        std::cout << name << " credit was successful." << std::endl;
-}
-
-// void Account::reset_credit() {
-//     credit = 0;
-// }
-
-void update_balance(Account p) {
-    try {
-    p.charge_deposit(); // call member function
-    std::cout << "The new balance of " << p.get_name() << " is: " << p.get_balance() << std::endl;
-    }
-    catch (...) {
-    std::cout << "The balance of " << p.get_name() << " was not changed." << std::endl;
-    }
-}
-
-// sending function
-
-void sending_money(Account person_out, Account person_in) {
-    try {
-    double *credit_ptr = nullptr;
-    credit_ptr = new double;
-    *credit_ptr = person_out.send_credit(); // call member function
-    person_in.get_credit(credit_ptr); // call member function
-    std::cout << "The new balance of " << person_out.get_name() << " is: " << person_out.get_balance() << std::endl;
-    std::cout << "The new balance of " << person_in.get_name() << " is: " << person_in.get_balance() << std::endl;
-    delete credit_ptr;
-    }
-    catch (int &ex) {
-    std::cout << "The balance of " << person_out.get_name() << " was not changed." << std::endl;
-    //delete credit_ptr;
-    }
-}
+// *** ***
 
 // void sending_address() {
 //     //static double person_in;

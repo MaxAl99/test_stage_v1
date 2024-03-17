@@ -14,24 +14,22 @@ void adding_customer(Bank& p);
 void disp_all_customer(Bank& p);
 void disp_customer(Bank& p);
 
+void charge_money(Bank& p);
+void sending_money(Bank& p);
+
 int main() {
     
-    Bank Bank1;
 
-    adding_customer(Bank1);
-    disp_all_customer(Bank1);
-    disp_customer(Bank1);
+    Bank Stonks_Bank_CORP;
 
+    adding_customer(Stonks_Bank_CORP);
+    disp_all_customer(Stonks_Bank_CORP);
+    disp_customer(Stonks_Bank_CORP);
 
-    // Accounts
-    // Account steve_account {"Steve",1000,1};
-    // display_customer(steve_account);
-    // Account tim_account {"Tim",500,2};
-    // display_customer(steve_account);
-    // display_customer(tim_account);
+    charge_money(Stonks_Bank_CORP);
 
-    // update_balance(steve_account);
-    // sending_money(steve_account, tim_account);
+    sending_money(Stonks_Bank_CORP);
+
 
     return 0;
 }
