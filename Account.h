@@ -180,22 +180,6 @@ class Bank
             }
         }
 
-        // void update_balance_customer(int index) {
-        //             if (customers.empty()) {
-        //                 std::cout << "No customers available." << std::endl;
-        //                 return;
-        //             }
-        //             if (index >= 0 && index < customers.size()) {
-        //                 std::cout << "*** Customer with ID " << index << " ***" << std::endl;
-        //                 std::cout << "Customer Name: " << customers.at(index).get_name() << std::endl;
-        //                 std::cout << "Customer Balance: " << customers.at(index).get_balance() << std::endl;
-        //                 std::cout << "Customer Number: " << customers.at(index).get_id() << std::endl;
-        //                 std::cout << "-------------------------" << std::endl; 
-        //             } else {
-        //                 // Throw an exception or handle the error appropriately
-        //                 throw std::out_of_range("Index out of bounds");
-        //             }
-
 };
 
 #endif //_ACCOUNT_H_
